@@ -1,0 +1,65 @@
+//Problem Q
+import java.util.Scanner;
+
+public class Q {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		while(true){
+			int x=sc.nextInt(),y=sc.nextInt();
+			if(x==0&&y==0)break;
+			String arr[][] = new String[x][y];
+			sc.nextLine();
+			for(int i =0;i<x;i++){
+				String[] row = sc.nextLine().split("");
+				for(int p =0;p<y;p++){
+
+					arr[i][p]=row[p];
+					//System.out.println(arr[i][p]);
+				}
+			}
+			try{
+				for(int q =0;q<x;q++){
+					for(int w =0;w<y;w++){
+						int temp = 0;
+						if(arr[q][w].equals(".")&&arr[q][w+1].equals("*")){
+							temp++;
+						}
+						if(arr[q][w].equals(".")&&arr[q][w-1].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q-1][w].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q+1][w].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q-1][w+1].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q-1][w-1].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q+1][w-1].equals("*")){
+							temp++;
+						}
+						else if(arr[q][w].equals(".")&&arr[q+1][w+1].equals("*")){
+							temp++;
+						}
+						if(arr[q][w].equals("*")){
+							System.out.print("*");
+						}else{
+							System.out.print(temp);
+						}
+						temp =0;
+					}
+				}
+			}catch(Exception e){
+
+			}
+		}
+
+	}
+
+}
+
