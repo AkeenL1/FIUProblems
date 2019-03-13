@@ -1,12 +1,14 @@
-//Problem Q
 import java.util.Scanner;
 
 public class Q {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int count =1;
 		while(true){
+			
 			int x=sc.nextInt(),y=sc.nextInt();
+			
 			if(x==0&&y==0)break;
 			String arr[][] = new String[x][y];
 			sc.nextLine();
@@ -18,48 +20,65 @@ public class Q {
 					//System.out.println(arr[i][p]);
 				}
 			}
-			try{
-				for(int q =0;q<x;q++){
-					for(int w =0;w<y;w++){
-						int temp = 0;
-						if(arr[q][w].equals(".")&&arr[q][w+1].equals("*")){
+			System.out.println("Field #"+count+":");
+			for(int q =0;q<x;q++){
+				for(int w =0;w<y;w++){
+					int temp = 0;
+					if(arr[q][w].equals("*")) {
+						System.out.print("*");
+					}else {
+						
+						//checks row above
+						if(w>=0&&q-1>=0&&arr[q-1][w].equals("*")) {
 							temp++;
 						}
-						if(arr[q][w].equals(".")&&arr[q][w-1].equals("*")){
+						if(q-1>=0&&w-1>=0&&arr[q-1][w-1].equals("*")) {
+							temp++;
+						}if(q-1>=0&&w+1<y&&arr[q-1][w+1].equals("*")) {
 							temp++;
 						}
-						else if(arr[q][w].equals(".")&&arr[q-1][w].equals("*")){
+						//check same row
+						if(w-1>=0&&q>=0&&arr[q][w-1].equals("*")) {
+							temp++;
+						}if(q>=0&&w+1<y&&arr[q][w+1].equals("*")) {
 							temp++;
 						}
-						else if(arr[q][w].equals(".")&&arr[q+1][w].equals("*")){
+						//checks row below
+						if(q+1<x&&w>=0&&arr[q+1][w].equals("*")) {
 							temp++;
 						}
-						else if(arr[q][w].equals(".")&&arr[q-1][w+1].equals("*")){
+						if(q+1<x&&w-1>=0&&arr[q+1][w-1].equals("*")) {
 							temp++;
 						}
-						else if(arr[q][w].equals(".")&&arr[q-1][w-1].equals("*")){
+						if(q+1<x&&w+1<y&&arr[q+1][w+1].equals("*")) {
 							temp++;
 						}
-						else if(arr[q][w].equals(".")&&arr[q+1][w-1].equals("*")){
-							temp++;
-						}
-						else if(arr[q][w].equals(".")&&arr[q+1][w+1].equals("*")){
-							temp++;
-						}
-						if(arr[q][w].equals("*")){
-							System.out.print("*");
-						}else{
-							System.out.print(temp);
-						}
-						temp =0;
+						System.out.print(temp);
 					}
+					
+					
 				}
-			}catch(Exception e){
+				System.out.println();
+				
 
-			}
+			}count++;
 		}
+
+
 
 	}
 
 }
 
+
+/*
+4 4
+*...
+....
+.*..
+....
+3 5
+**...
+.....
+.*...
+*/
