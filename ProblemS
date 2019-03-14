@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class S {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[][] XValues = new int[10][2];
+		int[][] YValues = new int[10][2];
+		while(true) {
+			String omit = sc.nextLine();
+			//if(omit.equals("*"))break;
+			sc.nextLine();
+			for(int row =0;row<10;row++) {
+				for(int column =0;column<2;column++) {
+					
+				}
+			}
+		}
+
+	}
+
+}
