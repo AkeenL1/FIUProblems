@@ -17,7 +17,7 @@ public class P {
 			 */
 			boolean space = false;
 			if (input.trim().isEmpty()) {
-				System.out.println("p");
+				System.out.println("");
 				space = true;
 			} else {
 				for (int i = 0; i < arr.length; i++) {
@@ -60,7 +60,7 @@ public class P {
 
 			}
 			if (space == false) {
-				System.out.println("p");
+				System.out.println("");
 			}else space = true;
 			
 		}
