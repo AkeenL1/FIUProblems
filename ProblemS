@@ -1,22 +1,128 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class S {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int[][] XValues = new int[10][2];
-		int[][] YValues = new int[10][2];
-		while(true) {
-			String omit = sc.nextLine();
-			//if(omit.equals("*"))break;
-			sc.nextLine();
-			for(int row =0;row<10;row++) {
-				for(int column =0;column<2;column++) {
-					
-				}
+		double[][] XValues = new double[10][2];
+		double[][] YValues = new double[10][2];
+		// Fills array with 9999.9 b/c no integers will fall between pairs of that #
+		for (int i = 0; i < 9; i++) {
+			for (int p = 0; p < 2; p++) {
+				XValues[i][p] = 9999.9;
+				YValues[i][p] = 9999.9;
 			}
 		}
+		// Fills x and y values with inputted pairs;
+		filler: while (true) {
+			String omit = sc.next();
+			if (omit.equals("*"))
+				break;
+			boolean bre = false;
 
+			outer: for (int rows = 0; rows < 9; rows++) {
+				double x1 = sc.nextDouble();
+				double x2 = sc.nextDouble();
+				double y1 = sc.nextDouble();
+				double y2 = sc.nextDouble();
+				for (int Xcolumns = 0; Xcolumns < 1; Xcolumns++) {
+
+					XValues[rows][Xcolumns] = x1;
+					Xcolumns++;
+					XValues[rows][Xcolumns] = y1;
+				}
+				for (int Ycolumns = 0; Ycolumns < 1; Ycolumns++) {
+					YValues[rows][Ycolumns] = x2;
+					Ycolumns++;
+					YValues[rows][Ycolumns] = y2;
+				}
+				omit = sc.next();
+				if (omit.equals("*")) {
+					bre = true;
+					break outer;
+				}
+			}
+			if (bre == true) {
+				break filler;
+			}
+		}
+		// fuckin kill me
+
+		int FinalCount = 0;
+
+		int CompareRowX = 0;
+		int CompareRowY = 0;
+		int yeet = 0;
+		boolean worked = false;
+		ArrayList<Integer> compareX = new ArrayList<>();
+		ArrayList<Integer> compareY = new ArrayList<>();
+		int i = 0;
+		while (true) {
+			int countX = 1;
+			int countY = 1;
+			double Xinput = sc.nextDouble();
+			double Yinput = sc.nextDouble();
+			if (Xinput == 9999.9 && Yinput == 9999.9) {
+				break;
+			} else {
+				FinalCount++;
+			}
+			for (; i < 10; i++) {
+				// System.out.println(CompareRowX);
+				xRows: for (; CompareRowX < 9;) {
+					for (int CompareCol = 0; CompareCol < 1; CompareCol++) {
+						// System.out.println("AHHHHHHHHHHHHHHHHH");
+						if (Xinput <= XValues[CompareRowX][CompareCol] && Xinput >= XValues[CompareRowX][CompareCol + 1]
+								|| Xinput >= XValues[CompareRowX][CompareCol]
+										&& Xinput <= XValues[CompareRowX][CompareCol + 1]) {
+
+							compareX.add(countX);
+						}
+					}
+					CompareRowX++;
+					break xRows;
+				}
+				countX++;
+				yRows: for (; CompareRowY < 9; CompareRowY++) {
+
+					for (int CompareColY = 0; CompareColY < 1; CompareColY++) {
+						if (Yinput <= YValues[CompareRowY][CompareColY]
+								&& Yinput >= YValues[CompareRowY][CompareColY + 1]
+								|| Yinput >= YValues[CompareRowY][CompareColY]
+										&& Yinput <= YValues[CompareRowY][CompareColY + 1]) {
+							compareY.add(countY);
+						}
+					}
+
+					CompareRowY++;
+
+					break yRows;
+				}
+				countY++;
+
+				for (; yeet < compareX.size(); yeet++) {
+					if (compareY.contains(compareX.get(yeet))) {
+						worked = true;
+						System.out.println("Point " + FinalCount + " is contained in figure " + compareX.get(yeet));
+					}
+				}
+
+			}
+			if (worked == false) {
+				System.out.println("Point " + FinalCount + " is not contained in any figure");
+			} else {
+				worked = false;
+			}
+			System.out.println(compareX);
+			System.out.println(compareY);
+			compareX.clear();
+			compareY.clear();
+			CompareRowX = 0;
+			CompareRowY = 0;
+			i = 0;
+			yeet = 0;
+		}
 	}
-
 }
