@@ -6,52 +6,57 @@ public class P {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		while(true) {
+
+		while (true) {
 			String input = sc.nextLine();
-			String[]arr=input.split("");
+			String[] arr = input.split("");
 			int count = 0;
-			/*for(int temp =0;temp<arr.length;temp++) {
-				if(arr[temp].equals("!")) {
-					System.out.println("yyet");
-				}
-			}*/
-			if(input.isEmpty()) {
-				System.out.println();
-			}else {
-				for(int i =0;i<arr.length;i++) {
-					if(arr[i].matches("1|2|3|4|5|6|7|8|9")) {
+			/*
+			 * for(int temp =0;temp<arr.length;temp++) { if(arr[temp].equals("!")) {
+			 * System.out.println("yyet"); } }
+			 */
+			if (input.trim().isEmpty()) {
+				System.out.println("p");
+			} else {
+				for (int i = 0; i < arr.length; i++) {
+					if (arr[i].matches("1|2|3|4|5|6|7|8|9")) {
 						count += Integer.parseInt(arr[i]);
 					}
-					if(arr[i].matches("[A-Z]")&&arr[i-1].matches("1|2|3|4|5|6|7|8|9")&&i-1>=0) {
-						for(int tempA =0;tempA<count;tempA++) {
+					if (arr[i].matches("[A-Z]") && arr[i - 1].matches("1|2|3|4|5|6|7|8|9") && i - 1 >= 0) {
+						for (int tempA = 0; tempA < count; tempA++) {
 							System.out.print(arr[i]);
 
-						}count =0;
-					}else if(arr[i].matches("[A-Z]")&&!(arr[i-1].matches("1|2|3|4|5|6|7|8|9"))&&i-1>=0){
-						for(int tempA =0;tempA<1;tempA++) {
+						}
+						count = 0;
+					} else if (arr[i].matches("[A-Z]") && !(arr[i - 1].matches("1|2|3|4|5|6|7|8|9")) && i - 1 >= 0) {
+						for (int tempA = 0; tempA < 1; tempA++) {
 							System.out.print(arr[i]);
 
-						}count =0;
+						}
+						count = 0;
 					}
-					if(arr[i].matches("!")) {
+					if (arr[i].matches("!")) {
 						System.out.println("");
 
 					}
-					if(arr[i].equals("b")) {
-						for(int tempB =0;tempB<count;tempB++) {
+					if (arr[i].equals("b")) {
+						for (int tempB = 0; tempB < count; tempB++) {
 							System.out.print(" ");
 
-						}count =0;
+						}
+						count = 0;
 					}
-					if(arr[i].equals("*")) {
-						for(int tempD =0;tempD<count;tempD++) {
+					if (arr[i].equals("*")) {
+						for (int tempD = 0; tempD < count; tempD++) {
 							System.out.print("*");
 
-						}count =0;
+						}
+						count = 0;
 					}
 
 				}
-				System.out.println();
+				// System.out.println("p");
+
 			}
 		}
 	}
