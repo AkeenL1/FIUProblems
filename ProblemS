@@ -74,9 +74,9 @@ public class S {
 				xRows: for (; CompareRowX < 9;) {
 					for (int CompareCol = 0; CompareCol < 1; CompareCol++) {
 						// System.out.println("AHHHHHHHHHHHHHHHHH");
-						if (Xinput <= XValues[CompareRowX][CompareCol] && Xinput >= XValues[CompareRowX][CompareCol + 1]
-								|| Xinput >= XValues[CompareRowX][CompareCol]
-										&& Xinput <= XValues[CompareRowX][CompareCol + 1]) {
+						if (Xinput < XValues[CompareRowX][CompareCol] && Xinput > XValues[CompareRowX][CompareCol + 1]
+								|| Xinput > XValues[CompareRowX][CompareCol]
+										&& Xinput < XValues[CompareRowX][CompareCol + 1]) {
 
 							compareX.add(countX);
 						}
@@ -88,10 +88,10 @@ public class S {
 				yRows: for (; CompareRowY < 9; CompareRowY++) {
 
 					for (int CompareColY = 0; CompareColY < 1; CompareColY++) {
-						if (Yinput <= YValues[CompareRowY][CompareColY]
-								&& Yinput >= YValues[CompareRowY][CompareColY + 1]
-								|| Yinput >= YValues[CompareRowY][CompareColY]
-										&& Yinput <= YValues[CompareRowY][CompareColY + 1]) {
+						if (Yinput < YValues[CompareRowY][CompareColY]
+								&& Yinput > YValues[CompareRowY][CompareColY + 1]
+								|| Yinput > YValues[CompareRowY][CompareColY]
+										&& Yinput < YValues[CompareRowY][CompareColY + 1]) {
 							compareY.add(countY);
 						}
 					}
@@ -115,8 +115,8 @@ public class S {
 			} else {
 				worked = false;
 			}
-			System.out.println(compareX);
-			System.out.println(compareY);
+			//System.out.println(compareX);
+			//System.out.println(compareY);
 			compareX.clear();
 			compareY.clear();
 			CompareRowX = 0;
